@@ -118,7 +118,7 @@ class Train(Vehicle):
         print("Length:", 20)
     
 ###############################################################################
-# TODO: 4. (3 pts)
+# DONE: 4. (3 pts)
 #
 #   For this _todo_, create three different objects and save each to a
 #   variable. Create a Car, Boat, and Train.
@@ -129,15 +129,15 @@ class Train(Vehicle):
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
-Car1 = Car()
+Car1 = Car(2012, "Chevrolet", "Colorado")
 Car1.horn()
 Car1.vehicle_info()
 
-Boat1 = Boat()
+Boat1 = Boat(2010, "Seas the Day")
 Boat1.horn()
 Boat1.vehicle_info()
 
-Train1 = Train()
+Train1 = Train(74, 20)
 Train1.horn()
 Train1.vehicle_info()
 

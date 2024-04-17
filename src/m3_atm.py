@@ -13,7 +13,7 @@ import tkinter as tk
 #   Once you have done this, then change the above _TODO_ to DONE.
 #
 #
-# TODO: 2. (3 pts)
+# DONE: 2. (3 pts)
 #
 #   For this _todo_, you will create an area where the user's current balance
 #   is displayed. There should be a label that says "Current Balance ($):" and
@@ -27,7 +27,7 @@ import tkinter as tk
 #   Once you have done this, then change the above _TODO_ to DONE.
 #
 #
-# TODO: 3 (3 pts)
+# DONE: 3 (3 pts)
 #
 #   For this _todo_, create two more labels: one that says "Amount ($):" and
 #   another that starts out empty beneath it. This is where the user's amount
@@ -36,7 +36,7 @@ import tkinter as tk
 #   Once you have done this, then change the above _TODO_ to DONE.
 #
 #
-# TODO: 4. (7 pts)
+# DONE: 4. (7 pts)
 #
 #   For this _todo_, you will create all the buttons that the user needs:
 #
@@ -52,7 +52,7 @@ import tkinter as tk
 #   Once you have done this, then change the above _TODO_ to DONE.
 #
 #
-# TODO: 5. (10 pts)
+# DONE: 5. (10 pts)
 #
 #   For this _todo_, using the command keyword on each button to have each
 #   number button type that digit in the amount label above (just like you
@@ -78,7 +78,7 @@ import tkinter as tk
 #   Once you have done this, then change the above _TODO_ to DONE.
 #
 #
-# TODO: 5. (3 pts)
+# DONE: 5. (3 pts)
 #
 #   For this _todo_, bind the window to any keypress so that if the user types
 #   a number, it also types that number into the amount label. Remember, you
@@ -86,280 +86,90 @@ import tkinter as tk
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
-# grid is 6 rows and 3 columns
-# 
 
-window = tk.Tk()
-window.title("ATM")
-
-atm_frame = tk.Frame(
-    window,
-    width = 200, 
-    height = 200, 
-    bg = "#F48F85")
-atm_frame.configure(borderwidth = 3, relief = 'sunken')
-atm_frame.grid_propagate(0)
-atm_frame.grid(column=1, row=1, pady=5, padx=5, sticky="e")
-
-balance_label = tk.Label(
-    atm_frame,
-    text = "Amount ($):",
-    fg = "#C00425",
-    bg = "#FFCCBB",
-)
-balance_label.grid(row=0, column=0, padx=10, pady=10, sticky="e")
-
-amount_label = tk.Label(
-    atm_frame,
-    text = "",
-    fg = "#C00425",
-    bg = "#FFCCBB"
-)
-amount_label.grid(row=0, column=1, padx=10, pady=10, sticky="w")
+initial_balance = 1000  
 
 def digit_handler(digit):
     current_amount = amount_label.cget("text")
     amount_label.config(text=current_amount + str(digit))
 
-button1 = tk.Button(
-    atm_frame,
-    text = "1",
-    fg = "#C00425",
-    bg = "#FFCCBB",
-    height = 75,
-    width = 75
-)
-button1.grid(column=1, row=3)
-
-button2 = tk.Button(
-    atm_frame,
-    text = "2",
-    fg = "#C00425",
-    bg = "#FFCCBB",
-    height = 75,
-    width = 75
-)
-button2.grid(column=2, row=3)
-
-button3 = tk.Button(
-    atm_frame,
-    text = "3",
-    fg = "#C00425",
-    bg = "#FFCCBB",
-    height = 75,
-    width = 75
-)
-button3.grid(column=3, row=3)
-
-button4 = tk.Button(
-    atm_frame,
-    text = "4",
-    fg = "#C00425",
-    bg = "#FFCCBB",
-    height = 75,
-    width = 75
-)
-button4.grid(column=1, row=4)
-
-button5 = tk.Button(
-    atm_frame,
-    text = "5",
-    fg = "#C00425",
-    bg = "#FFCCBB",
-    height = 75,
-    width = 75
-)
-button5.grid(column=2, row=4)
-
-button6 = tk.Button(
-    atm_frame,
-    text = "6",
-    fg = "#C00425",
-    bg = "#FFCCBB",
-    height = 75,
-    width = 75
-)
-button6.grid(column=3, row=4)
-
-button7 = tk.Button(
-    atm_frame,
-    text = "7",
-    fg = "#C00425",
-    bg = "#FFCCBB",
-    height = 75,
-    width = 75
-)
-button7.grid(column=1, row=5)
-
-button8 = tk.Button(
-    atm_frame,
-    text = "8",
-    fg = "#C00425",
-    bg = "#FFCCBB",
-    height = 75,
-    width = 75
-)
-button8.grid(column=2, row=5)
-
-button9 = tk.Button(
-    atm_frame,
-    text = "9",
-    fg = "#C00425",
-    bg = "#FFCCBB",
-    height = 75,
-    width = 75
-)
-button9.grid(column=3, row=5)
-
 def withdrawal_handler():
-    current_balance = float(balance_label.cget("text"))
-    amount = float(amount_label.cget("text"))
+    current_balance = int(current_balance_label.cget("text"))  
+    amount = int(amount_label.cget("text")) if amount_label.cget("text") else 0
     new_balance = current_balance - amount
-    balance_label.config(text=str(new_balance))
+    current_balance_label.config(text=str(new_balance)) 
     amount_label.config(text="")
-
-
-withdrawl_button = tk.Button(
-    atm_frame,
-    text = "Withdrawl",
-    fg = "#C00425",
-    bg = "#FFCCBB",
-    height = 75,
-    width = 75
-)
-withdrawl_button.grid(column=1, row=6)
 
 def deposit_handler():
-    current_balance = float(balance_label.cget("text"))
-    amount = float(amount_label.cget("text"))
+    current_balance = int(current_balance_label.cget("text"))  
+    amount = int(amount_label.cget("text")) if amount_label.cget("text") else 0
     new_balance = current_balance + amount
-    balance_label.config(text=str(new_balance))
+    current_balance_label.config(text=str(new_balance)) 
     amount_label.config(text="")
-
-deposit_button = tk.Button(
-    atm_frame,
-    text = "Deposit",
-    fg = "#C00425",
-    bg = "#FFCCBB",
-    height = 75,
-    width = 75,
-    command = deposit_handler
-)
-deposit_button.grid(column=3, row=6)
-
-
-
-window.mainloop()
-
-import tkinter as tk
-
 
 window = tk.Tk()
-window.title("ATM")  
+window.title("ATM")
 
+balance_frame = tk.Frame(window)
+balance_frame.grid(row=0, column=0, columnspan=3)
+balance_label = tk.Label(balance_frame, text="Current Balance ($):")
+balance_label.grid(row=0, column=0)
+current_balance_label = tk.Label(balance_frame, text=initial_balance)  
+current_balance_label.grid(row=1, column=0, columnspan=3)
 
-atm_frame = tk.Frame(
-    window,
-    width=200,
-    height=200,
-    bg="#F48F85"
-)
-atm_frame.configure(borderwidth=3, relief='sunken')
-atm_frame.grid(column=1, row=1, pady=5, padx=5, sticky="e")
+amount_frame = tk.Frame(window)
+amount_frame.grid(row=1, column=0, columnspan=3)
+amount_label_text = tk.Label(amount_frame, text="Amount ($):")
+amount_label_text.grid(row=0, column=0)
+amount_label = tk.Label(amount_frame, text="")
+amount_label.grid(row=1, column=0, columnspan=3)
 
+button_frame = tk.Frame(window)
+button_frame.grid(row=2, column=0, columnspan=3, rowspan=4)
+button_frame.grid_columnconfigure([0,1,2], minsize=75)
+button_frame.grid_rowconfigure([0,1,2,3], minsize=75)
 
-amount_label = tk.Label(
-    atm_frame,
-    text="Amount ($):",
-    fg="#C00425",
-    bg="#FFCCBB"
-)
-amount_label.grid(row=0, column=0, padx=10, pady=10, sticky="e")
-
-
-amount_value_label = tk.Label(
-    atm_frame,
-    text="",
-    fg="#C00425",
-    bg="#FFCCBB"
-)
-amount_value_label.grid(row=0, column=1, padx=10, pady=10, sticky="w")
-
-def digit_handler(digit):
-    current_amount = amount_value_label.cget("text")
-    amount_value_label.config(text=current_amount + str(digit))
-
-for i in range(1, 10):
-    digit = str(i)
+digits = "1234567890"
+row = 0
+col = 0
+for digit in digits:
     button = tk.Button(
-        atm_frame,
-        text=digit,
-        fg="#C00425",
-        bg="#FFCCBB",
-        height=75,
-        width=75,
-        command=lambda digit=digit: digit_handler(digit)
+        button_frame, 
+        text=digit, 
+        command=lambda d=digit: digit_handler(d),
+        width=7,  
+        height=3, 
     )
-    button.grid(column=(i-1) % 3, row=(i-1) // 3 + 2)
+    button.grid(row=row, column=col, sticky="nsew")
+    col += 1
+    if col > 2:
+        col = 0
+        row += 1
 
-
-def withdrawal_handler():
-    current_balance = float(balance_label.cget("text"))
-    amount = float(amount_value_label.cget("text"))
-    new_balance = current_balance - amount
-    balance_label.config(text=str(new_balance))
-    amount_value_label.config(text="")
-
-withdrawal_button = tk.Button(
-    atm_frame,
-    text="Withdrawal",
-    fg="#C00425",
-    bg="#FFCCBB",
-    height=75,
-    width=75,
-    command=withdrawal_handler
+withdraw_button = tk.Button(
+    button_frame, 
+    text="Withdrawl", 
+    command=withdrawal_handler,
+    width=7,  
+    height=3, 
 )
-withdrawal_button.grid(column=0, row=5)
-
-def deposit_handler():
-    current_balance = float(balance_label.cget("text"))
-    amount = float(amount_value_label.cget("text"))
-    new_balance = current_balance + amount
-    balance_label.config(text=str(new_balance))
-    amount_value_label.config(text="")
+withdraw_button.grid(row=row, column=0, sticky="nsew")
 
 deposit_button = tk.Button(
-    atm_frame,
-    text="Deposit",
-    fg="#C00425",
-    bg="#FFCCBB",
-    height=75,
-    width=75,
-    command=deposit_handler
+    button_frame, 
+    text="Deposit", 
+    command=deposit_handler,
+    width=7,  
+    height=3, 
 )
-deposit_button.grid(column=2, row=5)
+deposit_button.grid(row=row, column=2, sticky="nsew")
 
+def keypress(event):
+    key = event.char
+    if key.isdigit():
+        digit_handler(key)
 
-balance_label = tk.Label(
-    atm_frame,
-    text="Current Balance ($):",
-    fg="#C00425",
-    bg="#FFCCBB"
-)
-balance_label.grid(row=6, column=0, padx=10, pady=10, sticky="e")
-
-balance_amount_label = tk.Label(
-    atm_frame,
-    text="1000", 
-    fg="#C00425",
-    bg="#FFCCBB"
-)
-balance_amount_label.grid(row=6, column=1, padx=10, pady=10, sticky="w")
-
-
-window.update_idletasks()
-x = (window.winfo_screenwidth() - window.winfo_reqwidth()) / 2
-y = (window.winfo_screenheight() - window.winfo_reqheight()) / 2
-window.geometry("+%d+%d" % (x, y))
+window.bind("<Key>", keypress)
 
 window.mainloop()
+
